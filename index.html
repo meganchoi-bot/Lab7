@@ -79,12 +79,21 @@
 
     <!-- Main Script -->
     <script type="module">
+      const url = document.getElementById("endpoint").value;
+      const out = document.getElementById("output");
       // This function should fetch all of the data from the given endpoint.
       // From the 4 CRUD actions, this is the READ action, and uses the GET http method.
       // The main difference from fetchOne() will be the URL you request from; check
       // the writeup to view the URL pattern for fetch one and fetch all
       function fetchAll() {
-        // TODO
+        fetch(url)
+        .then((resp) => resp.json())
+        .then(function(data) {
+          out.innerHTML = JSON.stringify(data);
+        })
+        .catch(function(error) {
+          out.innerHTML = error;
+        });
       }
 
       // This function should fetch one entry from the given endpoint.
@@ -92,7 +101,14 @@
       // The main difference from fetchAll() will be the URL you request from; check
       // the writeup to view the URL pattern for fetch one and fetch all
       function fetchOne() {
-        // TODO
+        fetch(url)
+        .then((resp) => resp.json())
+        .then(function(data) {
+          out.innerHTML = JSON.stringify(data);
+        })
+        .catch(function(error) {
+          out.innerHTML = error;
+        });
       }
 
       // This function should use fetch to create one entry in the given endpoint.
